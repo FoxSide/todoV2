@@ -48,12 +48,12 @@ function App({demo = false}: PropsType) {
     <div className="App">
       <ErrorSnackbar/>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar className="toolbar">
           <IconButton edge="start" color="inherit" aria-label="menu">
             <Menu/>
           </IconButton>
           <Typography variant="h6">
-            News
+            Todolist
           </Typography>
 
           {isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Logout</Button>}
