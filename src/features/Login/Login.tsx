@@ -40,8 +40,8 @@ export const Login = () => {
       }
       if (!values.password) {
         errors.password = 'Required';
-      } else if (values.password.length < 6) {
-        errors.password = 'Password must be more than 6 characters';
+      } else if (values.password.length < 4) {
+        errors.password = 'Password must be more than 4 characters';
       }
       return errors;
     },
@@ -56,8 +56,8 @@ export const Login = () => {
 
   return <Grid container justifyContent={'center'}>
     <Grid item justifyContent={'center'}>
-      <form onSubmit={formik.handleSubmit}>
-        <FormControl>
+      <form onSubmit={formik.handleSubmit} style={{height: '80vh', display: 'flex', alignItems: 'center'}}>
+        <FormControl style={{background: 'white', marginTop: '20px' ,padding: '30px', borderRadius: '10px'}}>
           <FormLabel>
             <p>To log in get registered
               <a href={'https://social-network.samuraijs.com/'}
@@ -89,7 +89,7 @@ export const Login = () => {
                 <Checkbox {...formik.getFieldProps('rememberMe')}/>
               }
             />
-            <Button type={'submit'} variant={'contained'} color={'primary'}>
+            <Button style={{marginTop: '30px'}} type={'submit'} variant={'contained'} color={'info'}>
               Login
             </Button>
           </FormGroup>

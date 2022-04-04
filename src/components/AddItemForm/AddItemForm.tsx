@@ -36,7 +36,7 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
         }
     }
 
-    return <div>
+    return <div style={{display: 'flex', alignItems: 'center'}}>
         <TextField variant="outlined"
                    disabled={disabled}
                    error={!!error}
@@ -45,8 +45,9 @@ export const AddItemForm = React.memo(function ({addItem, disabled = false}: Add
                    onKeyPress={onKeyPressHandler}
                    label="Title"
                    helperText={error}
+                   color='info'
         />
-        <IconButton color="primary" onClick={addItemHandler} disabled={disabled}>
+        <IconButton color="inherit" onClick={addItemHandler} disabled={disabled}>
             <AddBox/>
         </IconButton>
     </div>

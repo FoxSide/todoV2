@@ -67,12 +67,17 @@ export const Todolist = React.memo(function ({demo = false, ...props}: PropsType
   }
 
   return <div>
-    <h3><EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
-      <IconButton onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>
+    <div style={{display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '10px'}}>
+      <div style={{fontWeight: 'bold', fontSize: '22px', maxWidth: '220px'}}>
+        <EditableSpan value={props.todolist.title} onChange={changeTodolistTitle}/>
+      </div>
+      <IconButton color='default' onClick={removeTodolist} disabled={props.todolist.entityStatus === 'loading'}>
         <Delete/>
       </IconButton>
-    </h3>
-    <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'}/>
+    </div>
+    <div>
+      <AddItemForm addItem={addTask} disabled={props.todolist.entityStatus === 'loading'}/>
+    </div>
     <div>
       {
         tasksForTodolist.map(t => <Task key={t.id} task={t} todolistId={props.todolist.id}
@@ -82,19 +87,19 @@ export const Todolist = React.memo(function ({demo = false, ...props}: PropsType
         />)
       }
     </div>
-    <div style={{paddingTop: '10px'}}>
-      <Button variant={props.todolist.filter === 'all' ? 'outlined' : 'text'}
+    <div style={{display: 'flex', justifyContent: 'space-between', paddingTop: '20px'}}>
+      <Button variant={props.todolist.filter === 'all' ? 'contained' : 'text'}
               onClick={onAllClickHandler}
               color={'inherit'}
       >All
       </Button>
-      <Button variant={props.todolist.filter === 'active' ? 'outlined' : 'text'}
+      <Button variant={props.todolist.filter === 'active' ? 'contained' : 'text'}
               onClick={onActiveClickHandler}
-              color={'primary'}>Active
+              color={'inherit'}>Active
       </Button>
-      <Button variant={props.todolist.filter === 'completed' ? 'outlined' : 'text'}
+      <Button variant={props.todolist.filter === 'completed' ? 'contained' : 'text'}
               onClick={onCompletedClickHandler}
-              color={'secondary'}>Completed
+              color={'inherit'}>Completed
       </Button>
     </div>
   </div>

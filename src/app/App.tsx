@@ -6,16 +6,14 @@ import {AppRootStateType} from './store'
 import {initializeAppTC, RequestStatusType} from './app-reducer'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
-import {Menu} from '@mui/icons-material';
 import {ErrorSnackbar} from '../components/ErrorSnackbar/ErrorSnackbar'
 import {Login} from "../features/Login/Login";
 import {Routes, Route, Navigate} from "react-router-dom";
-import { CircularProgress } from '@mui/material'
+import {CircularProgress} from '@mui/material'
 import {logoutTC} from "../features/Login/authReducer";
 
 type PropsType = {
@@ -48,18 +46,15 @@ function App({demo = false}: PropsType) {
     <div className="App">
       <ErrorSnackbar/>
       <AppBar position="static">
-        <Toolbar className="toolbar">
-          <IconButton edge="start" color="inherit" aria-label="menu">
-            <Menu/>
-          </IconButton>
-          <Typography variant="h6">
-            Todolist
+        <Toolbar className='toolbar'>
+          <Typography variant="h4" style={{color: '#0288d1'}}>
+            Todolists
           </Typography>
-
-          {isLoggedIn && <Button color="inherit" onClick={logoutHandler}>Logout</Button>}
-
+          {isLoggedIn && <Button color="error" variant='contained' onClick={logoutHandler}>Logout</Button>}
         </Toolbar>
-        {status === 'loading' && <LinearProgress color={"secondary"}/>}
+        <div style={{height: '2px', background: 'linear-gradient(90deg, rgba(52,50,50,1) 0%, rgba(25,23,23,1) 100%)'}}>
+          {status === 'loading' && <LinearProgress color={"warning"}/>}
+        </div>
       </AppBar>
       <Container fixed>
         <Routes>
